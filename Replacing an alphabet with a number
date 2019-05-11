@@ -13,4 +13,4 @@ def alphabet_position(text):
             output += " "+ str ( code[N] )
 
     return output
-print(alphabet_position(input()))
+print(alphabet_position())
