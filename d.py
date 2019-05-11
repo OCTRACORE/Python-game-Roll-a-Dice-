@@ -9,4 +9,6 @@ def to_camel_case(text):
     return camel_cased
 
 print(to_camel_case("hello-world"))
+print(to_camel_case("helloworld"))
+print(to_camel_case("hello_world"))
 
