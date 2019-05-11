@@ -1,4 +1,4 @@
-#sShows KeyError:'H'
+#Shows KeyError:'H'
 def alphabet_position(text):
     text.lower()
     code = {
