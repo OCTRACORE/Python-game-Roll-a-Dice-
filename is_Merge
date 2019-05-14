@@ -12,4 +12,4 @@ def is_merge(s, part1, part2):
         else:
            return False
 
-print(merger('Hello World','Hello','World'))
+print(is_merge('Hello World','Hello','World'))
