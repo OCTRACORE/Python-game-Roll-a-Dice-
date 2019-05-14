@@ -1,0 +1,15 @@
+def is_merge(s, part1, part2):
+    list1 = [(x) for x in s if x != " "]
+    list2 =  list()
+    for (l,m) in zip(part1,part2):
+        if l != " " and m != ' ':
+            list2 += str(l) + str(m)
+    list1.sort()
+    list2.sort()
+    for (l, m) in zip(part1, part2):
+        if l == m:
+           return True
+        else:
+           return False
+
+print(merger('Hello World','Hello','World'))
