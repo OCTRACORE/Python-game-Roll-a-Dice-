@@ -1,0 +1,24 @@
+def iq_test(numbers):
+    even = list()
+    odd = list()
+    numbers_list = numbers.split()
+    print(numbers_list)
+    for n in numbers_list:
+        if int(n) % 2 == 0:
+            even += n
+        else:
+            odd += n
+    even_len = len(even)
+    odd_len = len(odd)
+    print('EVEN:', even)
+    print('ODD:', odd)
+    print('even_len:', even_len )
+    print('odd_len:', even_len )
+    if even_len == 1:
+        for num in even:
+            return even.index(num)
+    elif odd_len == 1:
+        for num in odd:
+            return odd.index(num)
+
+print(iq_test('2 3 4 6 '))
