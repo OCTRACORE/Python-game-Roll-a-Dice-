@@ -1,0 +1,13 @@
+def is_isogram(string):
+  strings = string.lower()
+  ls = list(strings)
+  for x in ls:
+    if ls.count(x) == 1:
+      return True
+      break
+    elif ls == '' or ls == ' ':
+      return True
+    else:
+      return False
+      break
+      
