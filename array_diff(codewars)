@@ -1,0 +1,5 @@
+def array_diff(a, b):
+    new_a = set(a)
+    new_b = set(b)
+    return new_a.difference(new_b)
+print(array_diff([1,2],[1]))
