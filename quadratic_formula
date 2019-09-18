@@ -1,0 +1,14 @@
+print('coefficient for:')
+a = float(input('a: '))
+b = float(input('b: '))
+c = float(input('c: '))
+co_1 =  str(a)+'x^2' #ax^2
+co_2 =  str(b)+'x' #bx
+const =  c #c
+print('the quadratric equation is: ',int(co_1), '+' , int(co_2), '+' ,int(const)) # ax^2 + bx + c
+print('Roots')
+d_sqroot = ((b ** 2) -  (4*a*c))**(1/2) # discriminant = (b^2 - 4ac) ^0.5
+r_1= (-b + d_sqroot)/ (2 * a)
+                             #  x  = -b (+/-) d/2a
+r_2 = (-b - d_sqroot)/(2 * a) 
+print('roots:' + str(r_1) + str(r_2)) # print the roots
