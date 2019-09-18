@@ -1,0 +1,13 @@
+def avg_temperature():
+ x = list() #list for storing the temperatures
+ i = 7
+ day = ['monday','tuesday','wednesday','thursday','friday','saturday','sunday'] # list of the days in a week
+
+ for v in day: # iterating over the days in the list
+         x += input('Enter the temperature for '+ v + ": ") #concatenates each day in the parentheses after input and asks for temperature 7 times
+
+ average = 0 #variable for average temperature
+ for temp in x: #iterates over x 
+        average += float(temp) # adds the number stored in the x
+ return (average / 7) # divides the summation by 7
+print(avg_temperature()) #calls the function
