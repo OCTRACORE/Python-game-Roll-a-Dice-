@@ -1,0 +1,6 @@
+def pyg_latin():
+   word  =input('Enter a word: ') # user input
+   new_word  = '' #output warehouse
+   new_word += word[1:len(word)] + word[0]  + 'ay' #desired concatenation
+   return new_word # returning the output/result
+print(pyg_latin())
