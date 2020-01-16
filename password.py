@@ -1,60 +1,53 @@
-import random
-class password_creator(): 
-    def __init__(self,n,jumbled_output,final_output): #making the local variable
-        self.n  = n
-        self.jumbled_output = jumbled_output
-        self.final_output = final_output
-    def alpha_rand_func(self): # for alphabetical part of the password
-        alpha = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
-        alpha_pass = "" # stores alphabetical part of the variable
-        for i in range(0,(self.n//2)): #for inserting random alphabets
-            alpha_pass +=  random.choice(alpha)
+from random import *
+from itertools import *
+import string
+class password_generator():  
+   def __init__(self,final_output,special_nproduction,final_specp): #creating thwe local variables
+       self.final_output = final_output
+       self.special_nproduction = special_nproduction
+       self.final_specp = final_specp
+      
+   def alpha_rand_func(self): #for randomly selecting alphabets
+       alpha = string.ascii_letters
+       for i in range(4):
+           self.final_output += choice(alpha)
         
-        for x in range(self.n // 2):
-            self.jumbled_output += random.choice(alpha_pass) #for inserting random alphabets shortlisted previously in jumbled_output
-        self.n -= self.n // 2
-        #print(alpha_pass)
-
-    def int_rand_func(self):  #for numerical part of the password
-        int_ = str(1234567890) 
-        int_pass = "" #stores numerical part of the variable
-        for i in range(0,self.n):       
-            int_pass  += random.choice(int_) #inserting random integers for the
-        for x in range(self.n): #for inserting random numbers shortlisted previously in jumbled_output
-            self.jumbled_output += random.choice(int_pass)        
-        #print(int_pass)
-    def symbol_rand_func(self):
-        symbol = ",./;'\[]-=`<>?:|{ }_+~" 
-        sym_pass = "" #for storing symbolic prt of the password
-        for i in range(0,5):
-            sym_pass += random.choice(symbol) #inserting random symbols in sym_pass
-        for i in range(5):
-            self.jumbled_output += random.choice(sym_pass) #for inserting random symbols shortlisted previously in jumbled_output
-        self.n -= 5
-
-        #print(sym_pass)
-    def jumbling_func(self):
-       for i in self.jumbled_output:
-           self.final_output += random.choice(self.jumbled_output)
-       print(self.final_output)
-     
-    def clear(self): # for clearing the final_output and jumbled_output
-        self.final_output = ""
-        self.jumbled_output = ""
+   def symbol_rand_func(self): #for randomly selecting symbols
+      symbol = string.punctuation
+      for i in range(3):
+         self.special_nproduction += choice(symbol)
+             
+   def int_rand_func(self): #for randomly selecting integers
+      integer = string.digits
+      for i in range(2):
+         self.special_nproduction += choice(integer)
         
-    
-def inp_ut(): # for user input
-  suggestions = int(input("no. of suggestions: ")) # for the no. of suggestions of password the user wants
-  inp_ = password_creator(int(input("no. of characters: ")),"","")
-  while inp_.n <=5 : # no. of characters cannot be less or equal to 5
-   inp_ = password_creator(int(input("no. of characters: ")),"","")
-  else:
-    for x in range(suggestions): #running the methods the desired number of times
-  
-      inp_.symbol_rand_func()
-      inp_.alpha_rand_func()
-      inp_.int_rand_func()
-      inp_.jumbling_func()
-      inp_.clear()
-  return " "   
-print(inp_ut())
+   def special_number_production(self): #for concatenating the integers and symbols
+          self.special_nproduction = list(self.special_nproduction)
+          init_perm = list(permutations((self.special_nproduction),5))
+          selected_comb_init_list = choice(init_perm) #selecting a combination of integers and symbols randomly
+          mod_selected_comb_init = "" #for storing the combination in the form of a variable
+          for i in selected_comb_init_list: #iterating through the selected_comb_init_list
+             mod_selected_comb_init += i
+          self.final_specp += mod_selected_comb_init 
+   def final_output_production(self): #for concatenating all the characters, selecting a combination of it randommly and returning it as output
+      self.final_output += self.final_specp
+      self.final_output = list(self.final_output)
+      x = list(permutations((self.final_output),8)) #creating arrangements of the combination
+      selected_comb = choice(x) #selecting a combination randomly
+      mod_selected_comb = "" #for storing the combination in the form of string
+      for i in selected_comb: #iterating through selected_comb
+         mod_selected_comb += i
+      return mod_selected_comb #returning the final combination
+   
+######################################
+print("Here are the following passwords")
+######################################
+for x in range(1,6): # for creating 5 paswords
+ v =  password_generator("","","") #for calling the class
+ alpha_g = v.alpha_rand_func()                      #line 48-53; calling the class methods
+ sym_g = v.symbol_rand_func()
+ int_g = v.int_rand_func()
+ spec_g = v.special_number_production()
+ final_g = v.final_output_production()
+ print( x,":",final_g) 
